@@ -1,6 +1,6 @@
 package main;
 /*
- 	巴哈姆特私信抓帳號v0.1
+ 	巴哈姆特私信抓帳號v0.1.1
  	本程式由HybridGlucose（a07051226@gmail.com，巴哈ID：aa07051226）撰寫，特別寫給「巴哈姆特《歷史の紳士公會<ゝω・》」專用
 	本程式用於抓取私信串帳號，目前功能尚未完整
  	
@@ -8,11 +8,11 @@ package main;
  	1.可指定關鍵字
  	2.利用關鍵字抓該留言者帳號
  	3.自動產生私信用帳號格式
+ 	4.每20個帳號分行
  	
  	本程式不具有以下功能，預計未來推出
- 	1.每20個帳號分行
-	2.最後尾的「,」須手動刪除
-	3.圖形化界面
+	3.最後尾的「,」須手動刪除
+	4.圖形化界面
  	
  	 //版權聲明
  	 * 請勿改最此程式，本人(HybridGlucose)具有本程式著作權
@@ -69,12 +69,22 @@ public class StartHere {
 		finally
 		{
 			Iterator<String> listViewer = idList.iterator();
+			BufferedWriter outFile = new BufferedWriter(new FileWriter(outPath));
 			while (listViewer.hasNext())
 			{
-				outputID += listViewer.next() + ",";
+				for (int i = 0; i < 20; i++)
+				{
+					if (listViewer.hasNext())
+					{
+						outputID += listViewer.next() + ",";
+					}
+					else
+						break;
+				}
+				outFile.write(outputID);
+				outputID = "";
+				outFile.newLine();
 			}
-			BufferedWriter outFile = new BufferedWriter(new FileWriter(outPath));
-			outFile.write(outputID);
 			outFile.close();
 			System.out.println("\n\n\n檔案輸出位置為"+outPath);
 			System.out.println("最後尾的「,」不會自動刪除，請手動刪除它");
