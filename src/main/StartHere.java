@@ -1,6 +1,6 @@
 package main;
 /*
- 	巴哈姆特私信抓帳號v0.1.1
+ 	巴哈姆特私信抓帳號v0.1.2
  	本程式由HybridGlucose（a07051226@gmail.com，巴哈ID：aa07051226）撰寫，特別寫給「巴哈姆特《歷史の紳士公會<ゝω・》」專用
 	本程式用於抓取私信串帳號，目前功能尚未完整
  	
@@ -9,6 +9,7 @@ package main;
  	2.利用關鍵字抓該留言者帳號
  	3.自動產生私信用帳號格式
  	4.每20個帳號分行
+	5.顯示出私信人數
  	
  	本程式不具有以下功能，預計未來推出
 	3.最後尾的「,」須手動刪除
@@ -86,7 +87,8 @@ public class StartHere {
 				outFile.newLine();
 			}
 			outFile.close();
-			System.out.println("\n\n\n檔案輸出位置為"+outPath);
+			System.out.println("\n\n此次私信串人數為："+idList.size());
+			System.out.println("檔案輸出位置為"+outPath);
 			System.out.println("最後尾的「,」不會自動刪除，請手動刪除它");
 		}
 	}
