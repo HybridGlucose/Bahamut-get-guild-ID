@@ -1,7 +1,7 @@
 package ui;
 
 /*
-	巴哈姆特私信抓帳號v0.2
+	巴哈姆特私信抓帳號v0.2.1
 	本程式由HybridGlucose（a07051226@gmail.com，巴哈ID：aa07051226）撰寫，特別寫給「巴哈姆特《歷史の紳士公會<ゝω・》」專用
 本程式用於抓取私信串帳號，目前功能尚未完整
 	
@@ -10,11 +10,11 @@ package ui;
 	2.利用關鍵字抓該留言者帳號
 	3.自動產生私信用帳號格式
 	4.每20個帳號分行
-5.顯示出私信人數
-6.圖形化界面
+	5.顯示出私信人數
+	6.圖形化界面
 	
 	本程式不具有以下功能，預計未來推出
-3.最後尾的「,」須手動刪除
+	1.最後尾的「,」須手動刪除
 	
 	 //版權聲明
 	 * 請勿改最此程式，本人(HybridGlucose)具有本程式著作權
@@ -22,6 +22,11 @@ package ui;
  * 非經本人同意請勿散發本程式
 
 2015/07/19
+
+ *  修改暫時紀錄處
+ *  固定視窗大小
+ *  視窗置中
+ 2015/07/20
 */
 
 import java.awt.Color;
@@ -33,6 +38,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.*;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 
 
 
@@ -51,7 +57,9 @@ class StartGUI extends JFrame implements ActionListener
 	public StartGUI()
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
+		setSize(700, 500);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		setTitle("巴哈私信抓帳號");
 		setVisible(true);
 		
@@ -125,7 +133,9 @@ class AboutProgram extends JFrame
 	public AboutProgram() throws MalformedURLException
 	{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 400, 600);
+		setSize(400, 600);
+		setLocationRelativeTo(null);
+		setResizable(false);
 		setTitle("關於本程式");
 		setVisible(true);
 		
@@ -168,9 +178,9 @@ class AboutProgram extends JFrame
 		icon.setBounds(10, 350, 110, 160);
 		contentPane.add(icon);
 		
-		JLabel status = new JLabel(main.Process.getStatus(), JLabel.RIGHT);
+		JLabel status = new JLabel(main.Process.getStatus(), JLabel.CENTER);
 		status.setFont(new Font(null, Font.ITALIC, 14));
-		status.setBounds(30, 380, 300, 20);
+		status.setBounds(150, 380, 300, 20);
 		contentPane.add(status);
 	}
 }
