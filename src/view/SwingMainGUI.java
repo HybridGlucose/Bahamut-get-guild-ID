@@ -1,4 +1,4 @@
-package ui;
+package view;
 
 /*
 	巴哈姆特私信抓帳號v0.2.2
@@ -114,7 +114,7 @@ class StartGUI extends JFrame implements ActionListener
 		counterTitle.setBounds(455, 45, 180, 20);
 		contentPane.add(counterTitle);
 		
-		JLabel status = new JLabel(main.Process.getStatus());
+		JLabel status = new JLabel(controller.Process.getStatus());
 		status.setBounds(480, 440, 180, 20);
 		contentPane.add(status);
 		
@@ -173,7 +173,7 @@ class AboutProgram extends JFrame
 		icon.setBounds(10, 350, 110, 160);
 		contentPane.add(icon);
 		
-		JLabel status = new JLabel(main.Process.getStatus(), JLabel.CENTER);
+		JLabel status = new JLabel(controller.Process.getStatus(), JLabel.CENTER);
 		status.setFont(new Font(null, Font.ITALIC, 14));
 		status.setBounds(150, 380, 300, 20);
 		contentPane.add(status);
@@ -186,9 +186,9 @@ public void actionPerformed(ActionEvent e)
 	{
 		try
 		{ 
-			main.Process.inputSource(inputArea.getText(),filterField.getText());
-			outputArea.setText(main.Process.getOutput());
-			counterField.setText(main.Process.countID());
+			controller.Process.inputSource(inputArea.getText(),filterField.getText());
+			outputArea.setText(controller.Process.getOutput());
+			counterField.setText(controller.Process.countID());
 		} catch (IOException e1)
 		{
 			// TODO 自動產生的 catch 區塊
@@ -217,7 +217,7 @@ public void actionPerformed(ActionEvent e)
 }
 }
 
-public class MainGUI  {
+public class SwingMainGUI  {
 	public static void main(String[] args)
 	{
 		StartGUI mainGUI = new StartGUI();

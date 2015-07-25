@@ -1,4 +1,4 @@
-package main;
+package controller;
 /*
 	因應GUI產生，此部份已不維護
 */
