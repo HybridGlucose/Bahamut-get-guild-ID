@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Launcher extends Application {
@@ -20,6 +21,7 @@ public class Launcher extends Application {
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("巴哈私信抓帳號");
+			primaryStage.getIcons().add(new Image("/icon/icon.JPG"));
 			primaryStage.show();
 			
 		} catch (IOException e)

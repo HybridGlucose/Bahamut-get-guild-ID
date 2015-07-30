@@ -1,4 +1,4 @@
-package controller;
+package model;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,22 +17,34 @@ public class Process {
 	static String outputID = "";
 	static String outputFile;
 	static String OutputList;
+	static int FilterMode;
 	
-	public static void inputSource(String inputData,String keyWord) throws IOException
+	public static void inputSource(String inputData,String keyWord,int FilterMode) throws IOException
 	{
 		StringReader fr = new StringReader(inputData);
 		BufferedReader br = new BufferedReader(fr);
 		String line;
-		while((line = br.readLine())!= null)
+		while((line = br.readLine())!= null)//逐行讀取
 		{
-			String[] aryS = line.split("\\'*\\'");
-			if (aryS[5].equals(keyWord))
+			if (line.startsWith("all +=buildReply"))//判斷開頭文字
 			{
-				idList.add(aryS[1]);//[1]為id位置，[5]為內容位置
-				//System.out.print(aryS[5]);
-				//System.out.print(aryS[1]+",");
+				String[] aryS = line.split("\\'*\\'");
+				if (FilterMode == 0)
+				{
+					if (aryS[5].equals(keyWord))
+					{
+						idList.add(aryS[1]);//[1]為id位置，[5]為內容位置
+						//System.out.print(aryS[5]);
+						//System.out.print(aryS[1]+",");
+					}
+				}else if (FilterMode == 1)
+				{
+					idList.add(aryS[1]);
+				}
 			}
 		}
+		
+		//寫入List
 		Iterator<String> listViewer = idList.iterator();
 		StringWriter outputFile = new StringWriter();
 		while (listViewer.hasNext())
@@ -43,8 +55,8 @@ public class Process {
 				{
 					outputID += listViewer.next() + ",";
 				}
-				else
-					break;
+				//else
+					//break;
 			}
 			outputFile.append(outputID + "\n");
 			outputID = "";
@@ -65,7 +77,7 @@ public class Process {
 	
 	public static String getStatus()
 	{
-		String status = "V0.2.2   2015/07/20";
+		String status = "V0.3   2015/07/31";
 		return status;
 	}
 	

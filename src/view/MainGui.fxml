@@ -8,42 +8,22 @@
 <?import javafx.scene.layout.BorderPane?>
 
 <BorderPane minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainGuiController">
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
    <left>
-      <AnchorPane prefWidth="200.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="212.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="原始碼：" textFill="BLUE" />
-            <TextArea fx:id="inputArea" layoutX="14.0" layoutY="31.0" prefHeight="117.0" prefWidth="165.0" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="31.0" />
+            <Label layoutX="14.0" layoutY="41.0" text="原始碼：" textFill="BLUE" AnchorPane.topAnchor="40.0" />
+            <TextArea fx:id="inputArea" layoutX="14.0" layoutY="58.0" prefHeight="122.0" prefWidth="165.0" AnchorPane.bottomAnchor="20.0" AnchorPane.topAnchor="60.0" />
          </children>
       </AnchorPane>
    </left>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="篩選關鍵字：" textFill="BLUE" />
-            <TextField fx:id="filterField" layoutX="14.0" layoutY="31.0" />
-            <Label layoutX="14.0" layoutY="69.0" text="本次私信人數：" textFill="BLUE" />
-            <Text fx:id="counterText" fontSmoothingType="LCD" layoutX="14.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="人數" />
+            <Label layoutX="14.0" layoutY="39.0" text="篩選關鍵字：" textFill="BLUE" AnchorPane.topAnchor="40.0" />
+            <TextField fx:id="filterField" layoutX="14.0" layoutY="56.0" AnchorPane.topAnchor="60.0" />
+            <Label layoutX="14.0" layoutY="104.0" text="本次私信人數：" textFill="BLUE" />
+            <Text fx:id="counterText" fontSmoothingType="LCD" layoutX="14.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="人數" />
+            <CheckBox fx:id="wrapLineCheckBox" layoutX="13.0" layoutY="138.0" mnemonicParsing="false" onAction="#autoWrapLine" text="輸出自動換行" textFill="RED" AnchorPane.bottomAnchor="20.0" />
          </children>
       </AnchorPane>
    </center>
@@ -59,14 +39,18 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="14.0" layoutY="14.0" text="模式：" textFill="BLUE" />
-            <VBox prefHeight="127.0" prefWidth="184.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+            <Label layoutX="14.0" layoutY="14.0" text="篩選模式：" textFill="BLUE" AnchorPane.topAnchor="40.0" />
+            <VBox prefHeight="127.0" prefWidth="184.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
                <children>
-                  <RadioButton mnemonicParsing="false" selected="true" text="關鍵字篩選" />
+                  <RadioButton fx:id="keyWordRadioBtn" mnemonicParsing="false" onAction="#filterMode" selected="true" text="關鍵字篩選">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="FilterMode" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton fx:id="noFiliterRadioBtn" mnemonicParsing="false" onAction="#filterMode" text="無視內容" toggleGroup="$FilterMode" />
                </children>
             </VBox>
-            <Button fx:id="execBtn" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" onAction="#exec" prefWidth="80.0" text="執行" AnchorPane.topAnchor="144.0" />
-            <Button fx:id="clearBtn" cancelButton="true" layoutX="100.0" layoutY="144.0" mnemonicParsing="false" onAction="#clear" prefWidth="80.0" text="清除" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="144.0" />
+            <Button fx:id="execBtn" layoutX="14.0" layoutY="144.0" mnemonicParsing="false" onAction="#exec" prefWidth="80.0" text="執行" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="14.0" />
+            <Button fx:id="clearBtn" cancelButton="true" layoutX="100.0" layoutY="144.0" mnemonicParsing="false" onAction="#clear" prefWidth="80.0" text="清除" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="15.0" />
          </children>
       </AnchorPane>
    </right>
