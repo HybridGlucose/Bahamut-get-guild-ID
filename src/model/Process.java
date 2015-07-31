@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import com.sun.glass.ui.TouchInputSupport;
+
 
 
 public class Process {
@@ -18,9 +20,12 @@ public class Process {
 	static String outputFile;
 	static String OutputList;
 	static int FilterMode;
+	static String IDs;
 	
 	public static void inputSource(String inputData,String keyWord,int FilterMode) throws IOException
 	{
+		
+		clear();
 		StringReader fr = new StringReader(inputData);
 		BufferedReader br = new BufferedReader(fr);
 		String line;
@@ -62,6 +67,8 @@ public class Process {
 			outputID = "";
 		}
 		OutputList = outputFile.toString();
+		br.close();
+		fr.close();
 	}
 	
 	public static String getOutput()
@@ -69,15 +76,20 @@ public class Process {
 		return OutputList;
 	}
 	
+	public static void clear()
+	{
+		idList.clear();
+	}
+	
 	public static String countID()
 	{
-		String IDs = Integer.toString(idList.size());
+		IDs = Integer.toString(idList.size());
 		return IDs;
 	}
 	
 	public static String getStatus()
 	{
-		String status = "V0.3   2015/07/31";
+		String status = "V0.3.1   2015/07/31";
 		return status;
 	}
 	

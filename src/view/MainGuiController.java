@@ -77,6 +77,7 @@ public class MainGuiController implements Initializable {
 		inputArea.setText("");
 		outputArea.setText("");
 		counterText.setText("0");
+		model.Process.clear();
 	}
 	
 	@FXML
