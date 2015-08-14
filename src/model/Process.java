@@ -21,8 +21,9 @@ public class Process {
 	static String OutputList;
 	static int FilterMode;
 	static String IDs;
+	static int OutPutMode;
 	
-	public static void inputSource(String inputData,String keyWord,int FilterMode) throws IOException
+	public static void inputSource(String inputData,String keyWord,int FilterMode,int OutPutMode) throws IOException
 	{
 		
 		clear();
@@ -38,13 +39,13 @@ public class Process {
 				{
 					if (aryS[5].equals(keyWord))
 					{
-						idList.add(aryS[1]);//[1]為id位置，[5]為內容位置
+						idList.add(aryS[OutPutMode]);//[1]為id位置，[3]是暱稱位置，[5]為內容位置
 						//System.out.print(aryS[5]);
 						//System.out.print(aryS[1]+",");
 					}
 				}else if (FilterMode == 1)
 				{
-					idList.add(aryS[1]);
+					idList.add(aryS[OutPutMode]);
 				}
 			}
 		}
@@ -89,7 +90,7 @@ public class Process {
 	
 	public static String getStatus()
 	{
-		String status = "V0.3.1   2015/07/31";
+		String status = "V0.4   2015/08/15";
 		return status;
 	}
 	

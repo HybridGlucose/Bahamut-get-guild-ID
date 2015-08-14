@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MenuBarController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="檔案">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeApplacation" text="離開本程式" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="關於">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#aboutThisApplacation" text="關於本程式" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>

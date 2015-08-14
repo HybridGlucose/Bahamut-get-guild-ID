@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Checkbox;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -36,9 +35,14 @@ public class MainGuiController implements Initializable {
 	private RadioButton noFiliterRadioBtn;
 	@FXML
 	private CheckBox wrapLineCheckBox;
+	@FXML
+	private RadioButton idOutRadioBtn;
+	@FXML
+	private RadioButton nameOutRadioBtn;
 	
 	private Launcher launcher;
 	private int FilterModeValue = 0;
+	private int OutPutMode = 1;
 	
 	public MainGuiController() 
 	{
@@ -54,6 +58,7 @@ public class MainGuiController implements Initializable {
 	{
 		counterText.setText("0");
 		versionText.setText(model.Process.getStatus());
+		outputMode();
 	}
 
 	@FXML
@@ -61,7 +66,7 @@ public class MainGuiController implements Initializable {
 	{
 		try
 		{
-			model.Process.inputSource(inputArea.getText(),filterField.getText(),FilterModeValue);
+			model.Process.inputSource(inputArea.getText(),filterField.getText(),FilterModeValue,OutPutMode);
 			outputArea.setText(model.Process.getOutput());
 			counterText.setText(model.Process.countID());
 		} catch (IOException e)
@@ -93,6 +98,19 @@ public class MainGuiController implements Initializable {
 			filterField.setDisable(true);
 		}
 		return FilterModeValue;
+	}
+	
+	@FXML
+	private int outputMode()
+	{
+		if (idOutRadioBtn.isSelected())
+		{
+			OutPutMode = 1;
+		}else if (nameOutRadioBtn.isSelected())
+		{
+			OutPutMode = 3;
+		}
+		return OutPutMode;
 	}
 	
 	@FXML
